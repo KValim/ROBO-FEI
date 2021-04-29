@@ -14,7 +14,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.0016648113224491258 0.6502374785382321 0.7597291951133002 3.145482937409498
-  position -0.14625968711132245 2.769706958096096 0.8363810982010998
+  position -0.1461510834854693 2.748498042717437 0.8330670909381851
 }
 TexturedBackground {
 }
@@ -28,6 +28,8 @@ RobocupSoccerBall {
 Prometheus {
   translation -0.4 -0.00286545 0.45
   rotation 0 0 1 3.1408
+  backlash 0.025
+  controller "Control"
 }
 DEF Dummie Robot {
   translation 0.39 -0.00341263 0.45
@@ -1673,7 +1675,7 @@ DEF Dummie Robot {
       ]
       endPoint Solid {
         translation -0.2343 -0.0037486299999999993 -0.003999799999999998
-        rotation 0.00472756791022846 0.17574392231425243 -0.9844245648455021 0.01833530717957999
+        rotation 0.00472756791022846 0.17574392231425243 -0.9844245648455022 0.01833530717957999
         children [
           HingeJointWithBacklash {
             jointParameters HingeJointParameters {

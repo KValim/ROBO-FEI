@@ -7,7 +7,7 @@ maximizedDockId: -1
 centralWidgetVisible: 1
 renderingMode: PLAIN
 orthographicViewHeight: 1
-textFiles: 0 "protos/robos/prometheus/Prometheus.proto"
+textFiles: 1 "protos/robos/prometheus/Prometheus.proto" "controllers/Control/Control.cpp"
 globalOptionalRendering: CoordinateSystem::JointAxes::LightSensorRays
 consoles: Console:All:All
 renderingDevicePerspectives: blue player 1:Camera;1;0.417188;0;0

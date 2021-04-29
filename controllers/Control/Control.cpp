@@ -122,7 +122,7 @@ int main(int argc, char **argv)
     //uint8_t dxl_error = 0;
 
     //Configurando para prioridade maxima para executar este processo-------
-    sprintf(string1,"echo K!q19944| sudo -S renice -20 -p %d", getpid());
+    sprintf(string1,"echo 123456| sudo -S renice -20 -p %d", getpid());
     system(string1);//prioridade
 
     printf( "\n===== ROBOFEI-HT Control Process Robot Teen =====\n\n");
@@ -254,7 +254,7 @@ int main(int argc, char **argv)
 //        }
 //    } 
     //===============================
-    int key = 97; // walk 104 .bin   //107 .ini
+    int key = 107; // greeting 104   // walk_foward_slow 107 
     //***********************************************************************************************
     if (true) //verifica se foi chamado o argumento de controle pelo teclado
     {

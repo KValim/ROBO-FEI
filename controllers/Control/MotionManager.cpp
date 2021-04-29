@@ -534,7 +534,7 @@ void MotionManager::Process()
             ArmUpperR->setPosition(param[3]*0.001533203125); //-0.036158
             ArmUpperL->setPosition(param[4]*0.001533203125);   //0.018398
             ArmLowerR->setPosition(param[5]*0.001533203125); //-1.90
-            ArmLowerL->setPosition(param[6]*0.001533203125);//-1.90
+            ArmLowerL->setPosition(param[6]*-0.001533203125);//-1.90
             PelvYR->setPosition(param[7]*0.001533203125);
             PelvYL->setPosition(param[8]*0.001533203125);
             PelvR->setPosition(param[9]*0.001533203125);

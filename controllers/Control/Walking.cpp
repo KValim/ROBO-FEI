@@ -25,13 +25,13 @@ Walking* Walking::m_UniqueInstance = new Walking();
 
 Walking::Walking()
 {
-	X_OFFSET_START = X_OFFSET = -15;
-	Y_OFFSET = 5;
-	Z_OFFSET = 20;
+	X_OFFSET_START = X_OFFSET = 0;//-15;
+	Y_OFFSET = 0;//5;
+	Z_OFFSET = 0;//20;
     R_OFFSET = 0;
 	P_OFFSET = 0;
     A_OFFSET = 0;
-    HIP_PITCH_OFFSET = 13.0;
+    HIP_PITCH_OFFSET = 0;//13.0;
 	PERIOD_TIME = 600;
 	DSP_RATIO = 0.1;
 	STEP_FB_RATIO = 0.28;
@@ -389,10 +389,10 @@ void Walking::Process()
 	double TIME_UNIT = MotionModule::TIME_UNIT;
     //                     R_HIP_YAW, R_HIP_ROLL, R_HIP_PITCH, R_KNEE, R_ANKLE_PITCH, R_ANKLE_ROLL, L_HIP_YAW, L_HIP_ROLL, L_HIP_PITCH, L_KNEE, L_ANKLE_PITCH, L_ANKLE_ROLL, R_ARM_SWING, L_ARM_SWING
 
-	//                     R_HIP_YAW, R_HIP_ROLL, R_HIP_PITCH, R_KNEE, R_ANKLE_PITCH, R_ANKLE_ROLL, L_HIP_YAW, L_HIP_ROLL, L_HIP_PITCH, L_KNEE, L_ANKLE_PITCH, L_ANKLE_ROLL, R_ARM_SWING, L_ARM_SWING
-//	int dir[14]          = {   -1,         1,          1,         1,         -1,           -1,          -1,         1,         -1,         -1,         1,           -1,           1,           -1      };
-    int dir[14]          = {   1,         -1,          1,         1,         1,           1,          1,         -1,         1,         -1,         -1,            1,           -1,           -1      };
-    double initAngle[14] =     {   0.0,       0.0,        0.0,       0.0,        0.0,          0.0,         0.0,       0.0,        0.0,        0.0,       0.0,          0.0,         0,           0   };
+	//                       PelvYR,   PelvR_Roll,   LegUpperR_Pitch,   LegLowerR,   AnkleR_Pitch,   FootR_Roll,   PelvYL,   PelvL_Roll,   LegUpperL_Pitch,   LegLowerL,   AnkleL_Pitch,   FootL_Roll,   ShoulderR,   ShoulderL
+//	int dir[14]          = {   -1,         1,               1,              1,           -1,             -1,         -1,         1,              -1,             -1,            1,             -1,           1,       -1      };
+    int dir[14]          = {   1,         -1,               1,              1,            1,              1,          1,         -1,              1,              1,            1,              1,           -1,       1      };
+    double initAngle[14] = {   0.0,       0.0,             0.0,            0.0,          0.0,            0.0,        0.0,        0.0,            0.0,            0.0,          0.0,            0.0,          0,        0      };
 	int outValue[14];
 
     // Update walk parameters
