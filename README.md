@@ -1,5 +1,5 @@
 # ROBO-FEI
 
-Última versão do Webots utilizada: Webots Nightly Build (30-4-2021) -> webots-R2021b-x86-64.tar.bz2
+Última versão do Webots utilizada: Webots Nightly Build (4-5-2021) -> webots-R2021b-x86-64.tar.bz2
 
-https://github.com/cyberbotics/webots/releases/tag/nightly_30_4_2021
+https://github.com/cyberbotics/webots/releases/tag/nightly_4_5_2021
