@@ -401,7 +401,7 @@ void ActionMove::poseStandup(bool &stop_gait)
     write_int(mem, CONTROL_ACTION, 0);
     write_int(mem, CONTROL_MOVING, 1);
     std::cout<<"Start Action 1"<<std::endl;
-    move_action(1, 0, stop_gait); //1
+    move_action(1, 0, stop_gait); 
     write_int(mem, CONTROL_MOVING, 0);
     std::cout<<"Feito"<<std::endl;
     

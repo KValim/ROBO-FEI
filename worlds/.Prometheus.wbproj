@@ -10,8 +10,3 @@ orthographicViewHeight: 1
 textFiles: 1 "protos/robos/prometheus/Prometheus.proto" "controllers/Control/Control.cpp"
 globalOptionalRendering: CoordinateSystem::JointAxes::LightSensorRays
 consoles: Console:All:All
-renderingDevicePerspectives: blue player 1:Camera;1;0.417188;0;0
-renderingDevicePerspectives: blue player 2:Camera;1;0.417188;0;0
-renderingDevicePerspectives: blue player 3:Camera;1;0.417188;0;0
-renderingDevicePerspectives: blue player 4:Camera;1;0.417188;0;0
-renderingDevicePerspectives: red player 1(1):Camera;1;0.417188;0;0

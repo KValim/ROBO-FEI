@@ -14,6 +14,9 @@
 #include "Walking.h"
 #include "QuadraticStateTransform.h"
 #include <unistd.h>
+#include <iostream> //TODO tirar
+#include <stdio.h> //TODO tirar
+#include <unistd.h> //TODO tirar
 
 using namespace Robot;
 
@@ -25,21 +28,21 @@ Walking* Walking::m_UniqueInstance = new Walking();
 
 Walking::Walking()
 {
-	X_OFFSET_START = X_OFFSET = 0;//-15;
-	Y_OFFSET = 0;//5;
-	Z_OFFSET = 0;//20;
+	X_OFFSET_START = X_OFFSET = -15;
+	Y_OFFSET = -5;
+	Z_OFFSET = 20;
     R_OFFSET = 0;
 	P_OFFSET = 0;
     A_OFFSET = 0;
-    HIP_PITCH_OFFSET = 0;//13.0;
-	PERIOD_TIME = 600;
+    HIP_PITCH_OFFSET = 0;
+	PERIOD_TIME = 1100;
 	DSP_RATIO = 0.1;
 	STEP_FB_RATIO = 0.28;
 	Z_MOVE_AMPLITUDE = 40;
     Y_SWAP_AMPLITUDE = 20.0;
     Z_SWAP_AMPLITUDE = 5;
     PELVIS_OFFSET = 3.0;
-    ARM_SWING_GAIN = 1.5;
+    ARM_SWING_GAIN = 0.10;
 	BALANCE_KNEE_GAIN = 0.3;
 	BALANCE_ANKLE_PITCH_GAIN = 0.9;
 	BALANCE_HIP_ROLL_GAIN = 0.5;
@@ -58,14 +61,14 @@ Walking::Walking()
 	UPPER_VELADJ_LIMIT = 3;
 	speedAdj = 0;
 
-	m_Joint.SetAngle(JointData::ID_R_SHOULDER_PITCH, -10.00);
-	m_Joint.SetAngle(JointData::ID_L_SHOULDER_PITCH, 10.00);
-	m_Joint.SetAngle(JointData::ID_R_SHOULDER_ROLL, -75.10); //negativo fecha
-    m_Joint.SetAngle(JointData::ID_L_SHOULDER_ROLL, 87.10); // positivo fecha
+	m_Joint.SetAngle(JointData::ID_R_SHOULDER_PITCH, 0.00);
+	m_Joint.SetAngle(JointData::ID_L_SHOULDER_PITCH, 0.00);
+	m_Joint.SetAngle(JointData::ID_R_SHOULDER_ROLL, 0); //negativo fecha
+    m_Joint.SetAngle(JointData::ID_L_SHOULDER_ROLL, 0); // positivo fecha
 	m_Joint.SetAngle(JointData::ID_R_ELBOW, -155); // negativo frente
 	m_Joint.SetAngle(JointData::ID_L_ELBOW,  152); // positivo frente
-  BALANCE_ANGLE_GAIN = 0.1;
-  BALANCE_ANGLE_SMOOTH_GAIN = 0.91;
+  BALANCE_ANGLE_GAIN = 0.9;
+  BALANCE_ANGLE_SMOOTH_GAIN = 3.91;
 
 	m_Joint.SetAngle(JointData::ID_HEAD_TILT, Kinematics::EYE_TILT_OFFSET_ANGLE);
 
@@ -400,6 +403,7 @@ void Walking::Process()
     {
         update_param_time();
         m_Phase = PHASE0;
+        
         if(m_Ctrl_Running == false)
         {
             if(m_X_Move_Amplitude == 0 && m_Y_Move_Amplitude == 0 && m_A_Move_Amplitude == 0)
@@ -418,12 +422,14 @@ void Walking::Process()
     {
         update_param_move();
         m_Phase = PHASE1;
+        
     }
     else if(m_Time >= (m_Phase_Time2 - TIME_UNIT/2) && m_Time < (m_Phase_Time2 + TIME_UNIT/2))
     {
         update_param_time();
         m_Time = m_Phase_Time2;
         m_Phase = PHASE2;
+        
         if(m_Ctrl_Running == false)
         {
             if(m_X_Move_Amplitude == 0 && m_Y_Move_Amplitude == 0 && m_A_Move_Amplitude == 0)
@@ -442,6 +448,7 @@ void Walking::Process()
     {
         update_param_move();
         m_Phase = PHASE3;
+        
     }
     update_param_balance();
 

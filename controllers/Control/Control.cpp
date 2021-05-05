@@ -66,7 +66,6 @@ Arquivo fonte contendo o programa que controla os servos do corpo do robô
 using namespace Robot;
 using namespace std;
 
-
 int kbhit(); //Function kbhit.cpp
 
 //int check_servo(CM730 *cm730, int idServo, bool &stop_gait);

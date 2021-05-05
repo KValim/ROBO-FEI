@@ -56,18 +56,20 @@ void GaitMove::move_gait(float X_amplitude, float Y_amplitude, float A_amplitude
     {
         //Gait_in_place(stop_gait); // Need performes the Gait before performe others moviments
         if(stop_gait == 1)
-        {
+        {   
+            std::cout << "Recebendo os parametros de walking.cpp" << std::endl; //TODO tirar
             while(Walking::GetInstance()->GetCurrentPhase()!=0 && Walking::GetInstance()->IsRunning()!=0)  usleep(8*1000);
             Walking::GetInstance()->Stop();
             Walking::GetInstance()->m_Joint.SetEnableBody(false);
             Action::GetInstance()->m_Joint.SetEnableBody(true);
             MotionManager::GetInstance()->SetEnable(true);
-            //std::cout << "walkready page 9" << std::endl; //TODO tirar
-            //Action::GetInstance()->Start(9); // Realiza a ação do numero contido no move_number
-            while(Action::GetInstance()->IsRunning()) usleep(8*1000); // Aguarda finalizar a ação
+            std::cout << "walkready page 5" << std::endl; //TODO tirar // page 9
+            Action::GetInstance()->Start(5); // Realiza a ação do numero contido no move_number
+            while(Action::GetInstance()->IsRunning()) usleep(8*1000); // Aguarda finalizar a ação   //usleep(8*1000)
             stop_gait = 0;
         }
         std::cout << "Stop com gait" << std::endl;
+        std::cout << "Recebendo os parametros de [Gait]" << std::endl; //TODO tirar
         gait->changeParam(Walking::GetInstance()); //volta para ons parametros padrao do gait
         Action::GetInstance()->Stop();
         Walking::GetInstance()->m_Joint.SetEnableBody(true); 
@@ -76,10 +78,12 @@ void GaitMove::move_gait(float X_amplitude, float Y_amplitude, float A_amplitude
         Walking::GetInstance()->X_MOVE_AMPLITUDE = gait->walk_foward;
         Walking::GetInstance()->Y_MOVE_AMPLITUDE = gait->sidle;
         Walking::GetInstance()->A_MOVE_AMPLITUDE = gait->turn_angle;
+        std::cout << "start" << std::endl;
         Walking::GetInstance()->Start();
         sleep(2); //2
         
     }
+    std::cout << "Recebendo os parametros de [Walking Slow]" << std::endl; //TODO tirar
     configP->changeParam(Walking::GetInstance()); //change the parameters
     Action::GetInstance()->Stop();
     MotionManager::GetInstance()->SetEnable(true);
