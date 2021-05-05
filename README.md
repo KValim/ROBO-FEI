@@ -4,8 +4,3 @@
 <<<<<<< HEAD
 
 https://github.com/cyberbotics/webots/releases/tag/nightly_4_5_2021
-
-=======
-
-https://github.com/cyberbotics/webots/releases/tag/nightly_4_5_2021
->>>>>>> d75f315bd2c51e8c1dcaa653c6c7b29702aeef8b
