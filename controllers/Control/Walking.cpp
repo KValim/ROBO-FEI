@@ -14,9 +14,6 @@
 #include "Walking.h"
 #include "QuadraticStateTransform.h"
 #include <unistd.h>
-#include <iostream> //TODO tirar
-#include <stdio.h> //TODO tirar
-#include <unistd.h> //TODO tirar
 
 using namespace Robot;
 
@@ -41,7 +38,7 @@ Walking::Walking()
 	Z_MOVE_AMPLITUDE = 40;
     Y_SWAP_AMPLITUDE = 20.0;
     Z_SWAP_AMPLITUDE = 5;
-    PELVIS_OFFSET = 3.0;
+    PELVIS_OFFSET = 3000.0;
     ARM_SWING_GAIN = 0.10;
 	BALANCE_KNEE_GAIN = 0.3;
 	BALANCE_ANKLE_PITCH_GAIN = 0.9;
