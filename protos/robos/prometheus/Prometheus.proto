@@ -1312,7 +1312,7 @@ PROTO Prometheus [
           children [
             Camera {
               translation 0.0226 0.009 0.11
-              rotation 1 0 0 -1.5707953071795862
+              rotation 0 0.707106 0.707106 3.14159
               children [
                 Shape {
                   appearance Appearance {
