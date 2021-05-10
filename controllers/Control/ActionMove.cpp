@@ -347,7 +347,7 @@ void ActionMove::greetings(bool &stop_gait)
     write_int(mem, CONTROL_ACTION, 19);
     write_int(mem, CONTROL_MOVING, 1);
     std::cout<<" | \e[38;5;45mGreetings\e[0m"<<std::endl;
-    move_action(1, 0, stop_gait); //24
+    move_action(24, 0, stop_gait); //24
     write_int(mem, CONTROL_MOVING, 0);
 }
 
