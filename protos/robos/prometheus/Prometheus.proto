@@ -1427,7 +1427,7 @@ PROTO Prometheus [
           }
         ]
         endPoint Solid {
-          translation -0.005199999999999996 -0.004127500000000001 0.0010678799999999933
+          translation -0.0050 -0.0040 -0.005
           rotation -0.00013971575300079865 -0.9873127967867187 0.15878734767196034 0.00035289625768412556
           children [
             HingeJointWithBacklash {
@@ -1711,7 +1711,7 @@ PROTO Prometheus [
             density -1
             mass 0.01
             centerOfMass [
-              0.083 -0.01 0.086
+              0.083 -0.00999 0.08676
             ]
           }
         }
@@ -2021,7 +2021,7 @@ PROTO Prometheus [
             density -1
             mass 0.01
             centerOfMass [
-              0.155 -0.008 0.086
+              0.155 -0.0077 0.0864
             ]
           }
         }
@@ -2273,7 +2273,7 @@ PROTO Prometheus [
                                               translation -0.023 -0.009 -0.4099
                                               children [
                                                 Box {
-                                                  size 0.114 0.213 0.039
+                                                  size 0.103 0.203 0.041
                                                 }
                                               ]
                                             }
@@ -2281,7 +2281,7 @@ PROTO Prometheus [
                                               density -1
                                               mass 0.1
                                               centerOfMass [
-                                                -0.055 -0.007 -0.427
+                                                -0.039 -0.007 -0.425
                                               ]
                                             }
                                           }
@@ -2937,7 +2937,7 @@ PROTO Prometheus [
                                         density -1
                                         mass 0.35
                                         centerOfMass [
-                                          -0.0396 0.0375 -0.38
+                                          -0.0396 0.033 -0.38
                                         ]
                                       }
                                     }
@@ -3042,7 +3042,7 @@ PROTO Prometheus [
                             density -1
                             mass 0.34
                             centerOfMass [
-                              -0.038 0.015 -0.219
+                              -0.039 0.0124 -0.219
                             ]
                           }
                         }
@@ -3061,7 +3061,7 @@ PROTO Prometheus [
                       density -1
                       mass 0.18
                       centerOfMass [
-                        -0.039 0.04 -0.148
+                        -0.039 0.033 -0.148
                       ]
                     }
                   }
@@ -3102,7 +3102,7 @@ PROTO Prometheus [
             density -1
             mass 0.01
             centerOfMass [
-              0 0 0.02
+              0.0009 -0.0044 0.018
             ]
           }
         }
@@ -3354,7 +3354,7 @@ PROTO Prometheus [
                                               translation -0.053 -0.009 -0.4099
                                               children [
                                                 Box {
-                                                  size 0.114 0.213 0.039
+                                                  size 0.103 0.203 0.039
                                                 }
                                               ]
                                             }
@@ -3362,7 +3362,7 @@ PROTO Prometheus [
                                               density -1
                                               mass 0.1
                                               centerOfMass [
-                                                -0.055 -0.007 -0.427
+                                                -0.039 -0.007 -0.425
                                               ]
                                             }
                                           }
@@ -4058,7 +4058,7 @@ PROTO Prometheus [
                                   density -1
                                   mass 0.07
                                   centerOfMass [
-                                    -0.037 0.012 -0.33
+                                    -0.039 0.012 -0.33
                                   ]
                                 }
                               }
@@ -4123,7 +4123,7 @@ PROTO Prometheus [
                             density -1
                             mass 0.34
                             centerOfMass [
-                              -0.038 0.015 -0.219
+                              -0.039 0.012 -0.219
                             ]
                           }
                         }
@@ -4142,7 +4142,7 @@ PROTO Prometheus [
                       density -1
                       mass 0.18
                       centerOfMass [
-                        -0.039 0.04 -0.148
+                        -0.039 0.034 -0.148
                       ]
                     }
                   }
@@ -4183,13 +4183,13 @@ PROTO Prometheus [
             density -1
             mass 0.01
             centerOfMass [
-              0 0 0.02
+              0.0008 -0.0042 0.018
             ]
           }
         }
       }
       Gyro {
-        translation 0 0 -0.1
+        translation -0.003 -0.048 0.0414
         name "Gyro"
         lookupTable [
           -34.907 0 0
@@ -4197,7 +4197,7 @@ PROTO Prometheus [
         ]
       }
       Accelerometer {
-        translation 0 0 -0.1
+        translation -0.003 -0.048 0.0414
         rotation 1 0 0 0
         name "Accelerometer"
         lookupTable [
@@ -4213,7 +4213,7 @@ PROTO Prometheus [
       density -1
       mass 0.9
       centerOfMass [
-        0 0 0
+        0 0.09 0.042
       ]
     }
   }

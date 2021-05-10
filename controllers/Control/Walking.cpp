@@ -25,9 +25,9 @@ Walking* Walking::m_UniqueInstance = new Walking();
 
 Walking::Walking()
 {
-	X_OFFSET_START = X_OFFSET = -15;
-	Y_OFFSET = -5;
-	Z_OFFSET = 20;
+	X_OFFSET_START = X_OFFSET = 0;//-15;
+	Y_OFFSET = 0;//-5;
+	Z_OFFSET = 0;//20;
     R_OFFSET = 0;
 	P_OFFSET = 0;
     A_OFFSET = 0;
@@ -391,7 +391,7 @@ void Walking::Process()
 
 	//                       PelvYR,   PelvR_Roll,   LegUpperR_Pitch,   LegLowerR,   AnkleR_Pitch,   FootR_Roll,   PelvYL,   PelvL_Roll,   LegUpperL_Pitch,   LegLowerL,   AnkleL_Pitch,   FootL_Roll,   ShoulderR,   ShoulderL
 //	int dir[14]          = {   -1,         1,               1,              1,           -1,             -1,         -1,         1,              -1,             -1,            1,             -1,           1,       -1      };
-    int dir[14]          = {   1,         -1,               1,              1,            1,              1,          1,         -1,              1,              1,            1,              1,           -1,       1      };
+    int dir[14]          = {   -1,         -1,               1,              1,            1,              1,          1,         -1,              1,              1,            1,              1,           -1,       1      };
     double initAngle[14] = {   0.0,       0.0,             0.0,            0.0,          0.0,            0.0,        0.0,        0.0,            0.0,            0.0,          0.0,            0.0,          0,        0      };
 	int outValue[14];
 

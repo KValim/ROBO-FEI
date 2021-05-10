@@ -9,4 +9,5 @@ renderingMode: PLAIN
 orthographicViewHeight: 1
 textFiles: 1 "protos/robos/prometheus/Prometheus.proto" "controllers/Control/Control.cpp"
 globalOptionalRendering: CoordinateSystem::JointAxes::LightSensorRays
+centerOfMass: red player 1::player red 1
 consoles: Console:All:All
