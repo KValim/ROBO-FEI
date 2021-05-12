@@ -2065,10 +2065,10 @@ PROTO Prometheus [
                   device [
                     RotationalMotor {
                       name "PelvL"
-                      maxVelocity 100
+                      maxVelocity IS XH540W270-vel14-8V
                       minPosition -2.83
                       maxPosition 2.83
-                      maxTorque 1000
+                      maxTorque IS XH540W270-torque14-8V
                     }
                     PositionSensor {
                       name "PelvLS"
@@ -3146,10 +3146,10 @@ PROTO Prometheus [
                   device [
                     RotationalMotor {
                       name "PelvR"
-                      maxVelocity 100
+                      maxVelocity IS XH540W270-vel14-8V
                       minPosition -2.83
                       maxPosition 2.83
-                      maxTorque 1000
+                      maxTorque IS XH540W270-torque14-8V
                     }
                     PositionSensor {
                       name "PelvRS"
@@ -4213,7 +4213,7 @@ PROTO Prometheus [
       density -1
       mass 0.9
       centerOfMass [
-        0 0.09 0.042
+        0 0.02 -0.02
       ]
     }
   }

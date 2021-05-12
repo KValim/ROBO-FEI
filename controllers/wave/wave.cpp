@@ -41,16 +41,42 @@ int main(int argc, char **argv) {
   ArmUpperR->setPosition(2.434);
   ArmLowerR->setPosition(0.00);
   PelvYL->setPosition(0.00);
-  PelvL->setPosition(-0.630);
+  PelvL->setPosition(0.00);
   LegUpperL->setPosition(0.00);
   LegLowerL->setPosition(0.00);
-  AnkleL->setPosition(0.453);
+  AnkleL->setPosition(0.00);
   FootL->setPosition(0.00);
   PelvYR->setPosition(0.00);
-  PelvR->setPosition(0.623);
+  PelvR->setPosition(0.00);
   LegUpperR->setPosition(0.00);
   LegLowerR->setPosition(0.00);
-  AnkleR->setPosition(0.453);
+  AnkleR->setPosition(0.00);
+  FootR->setPosition(0.00);
+  t = 0;
+  };
+  
+  t= -1;
+  
+  while(robot->step(timeStep) != t){
+  //upright pose
+  Neck->setPosition(0.00);
+  ShoulderL->setPosition(0.00);
+  ArmUpperL->setPosition(-2.434);
+  ArmLowerL->setPosition(0.00);
+  ShoulderR->setPosition(0.00);
+  ArmUpperR->setPosition(2.434);
+  ArmLowerR->setPosition(0.00);
+  PelvYL->setPosition(0.00);
+  PelvL->setPosition(0.00);
+  LegUpperL->setPosition(0.00);
+  LegLowerL->setPosition(0.00);
+  AnkleL->setPosition(0.00);
+  FootL->setPosition(0.00);
+  PelvYR->setPosition(0.00);
+  PelvR->setPosition(0.00);
+  LegUpperR->setPosition(0.00);
+  LegLowerR->setPosition(0.00);
+  AnkleR->setPosition(0.00);
   FootR->setPosition(0.00);
   
   }

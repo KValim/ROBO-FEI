@@ -6,7 +6,7 @@
 #include <webots/Motor.hpp>
 #include <iostream>
 
-#define timeStep 32
+#define timeStep 8
 using namespace webots;
 using namespace std;
 

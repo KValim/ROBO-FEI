@@ -63,8 +63,8 @@ void GaitMove::move_gait(float X_amplitude, float Y_amplitude, float A_amplitude
             Walking::GetInstance()->m_Joint.SetEnableBody(false);
             Action::GetInstance()->m_Joint.SetEnableBody(true);
             MotionManager::GetInstance()->SetEnable(true);
-            std::cout << "walkready page 5" << std::endl; //TODO tirar // page 9
-            Action::GetInstance()->Start(5); // Realiza a ação do numero contido no move_number
+            std::cout << "walkready page 9" << std::endl; //TODO tirar // page 9
+            Action::GetInstance()->Start(9); // Realiza a ação do numero contido no move_number
             while(Action::GetInstance()->IsRunning()) usleep(8*1000); // Aguarda finalizar a ação   //usleep(8*1000)
             stop_gait = 0;
         }

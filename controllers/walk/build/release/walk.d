@@ -1,5 +1,5 @@
 build/release/walk.o: walk.cpp \
- /usr/local/webots/include/controller/cpp/webots/Robot.hpp \
- /usr/local/webots/include/controller/cpp/webots/Motor.hpp \
- /usr/local/webots/include/controller/cpp/webots/Device.hpp \
- /usr/local/webots/include/controller/cpp/webots/../../c/webots/types.h
+ /home/kvalim/Documents/dev/webots/include/controller/cpp/webots/Robot.hpp \
+ /home/kvalim/Documents/dev/webots/include/controller/cpp/webots/Motor.hpp \
+ /home/kvalim/Documents/dev/webots/include/controller/cpp/webots/Device.hpp \
+ /home/kvalim/Documents/dev/webots/include/controller/cpp/webots/../../c/webots/types.h
