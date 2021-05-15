@@ -38,7 +38,8 @@ Arquivo fonte contendo o programa que controla os servos do corpo do robô
 //#include <boost/program_options.hpp> //tratamento de argumentos linha de comando
 #include "ActionMove.hpp"
 #include "GaitMove.hpp"
-#include <webots/Robot.hpp>
+//#include <webots/Robot.hpp>
+#include <../../../../../../include/controller/cpp/webots/Robot.hpp>
 
 #ifdef MX28_1024
 #define MOTION_FILE_PATH    "./Data/motion_1024.bin"
@@ -117,12 +118,12 @@ int main(int argc, char **argv)
     bool same_moviment = false;
     int buffer = 10000;
     unsigned int count_read=0;
-    unsigned int step_time=20; // Determina a frequencia de leitura do blackboard
+    unsigned int step_time=8; // Determina a frequencia de leitura do blackboard
     //uint8_t dxl_error = 0;
 
     //Configurando para prioridade maxima para executar este processo-------
-    sprintf(string1,"echo 123456| sudo -S renice -20 -p %d", getpid());
-    system(string1);//prioridade
+    //sprintf(string1,"echo 123456| sudo -S renice -20 -p %d", getpid());
+    //system(string1);//prioridade
 
     printf( "\n===== ROBOFEI-HT Control Process Robot Teen =====\n\n");
     //-------------para entrada de argumentos-----------------------------------
@@ -222,6 +223,7 @@ int main(int argc, char **argv)
     MotionManager::GetInstance()->AddModule((MotionModule*)Walking::GetInstance());
     LinuxMotionTimer linuxMotionTimer;
     linuxMotionTimer.Initialize(MotionManager::GetInstance());
+    printf( "\n===== 255 =====\n\n");
     linuxMotionTimer.Start();
     printf( "\n===== Iniciou a Thread =====\n\n");
     
