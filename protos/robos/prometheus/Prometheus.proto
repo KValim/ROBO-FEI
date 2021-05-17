@@ -7,7 +7,7 @@ PROTO Prometheus [
   field SFFloat    XH540W270-vel14-8V       3.87
   field SFFloat    XH540W270-damping14-8V   0.34
   field SFFloat    XH540W270-friction14-8V  1.49
-  field SFFloat    backlash                 0.25
+  field SFFloat    backlash                 0.004363323
   field SFFloat    resolution               0.0015
   field SFString   controller               ""  
   field SFBool     selfCollision            TRUE      
