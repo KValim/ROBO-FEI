@@ -38,8 +38,8 @@ Arquivo fonte contendo o programa que controla os servos do corpo do robô
 //#include <boost/program_options.hpp> //tratamento de argumentos linha de comando
 #include "ActionMove.hpp"
 #include "GaitMove.hpp"
-//#include <webots/Robot.hpp>
-#include <../../../../../../include/controller/cpp/webots/Robot.hpp>
+#include <webots/Robot.hpp>
+//#include <../../../../../../include/controller/cpp/webots/Robot.hpp>
 
 #ifdef MX28_1024
 #define MOTION_FILE_PATH    "./Data/motion_1024.bin"
@@ -95,9 +95,9 @@ void sighandler(int sig)
 
 int main(int argc, char **argv)
 {
-
+    
     change_current_dir();
-
+    
     minIni* ini;
     ini = new minIni((char *)INI_FILE_PATH);
 
@@ -107,9 +107,9 @@ int main(int argc, char **argv)
     signal(SIGINT, &sighandler);
     //---------------------------
 
-      //Acopla ou cria a memoria compartilhada
+    //Acopla ou cria a memoria compartilhada
     int *mem = using_shared_memory(ini->getd("Communication","no_player_robofei",-1024) * 100); //0 for real robot
-
+    
     char string1[50]; //String
     bool stop_gait = true;
     //char *Servoport;
@@ -122,9 +122,9 @@ int main(int argc, char **argv)
     //uint8_t dxl_error = 0;
 
     //Configurando para prioridade maxima para executar este processo-------
-    //sprintf(string1,"echo 123456| sudo -S renice -20 -p %d", getpid());
-    //system(string1);//prioridade
-
+    sprintf(string1,"sudo chrt -p -r 99 %d", getpid());
+    system(string1); //prioridade
+    
     printf( "\n===== ROBOFEI-HT Control Process Robot Teen =====\n\n");
     //-------------para entrada de argumentos-----------------------------------
 //    namespace po=boost::program_options;
@@ -223,14 +223,12 @@ int main(int argc, char **argv)
     MotionManager::GetInstance()->AddModule((MotionModule*)Walking::GetInstance());
     LinuxMotionTimer linuxMotionTimer;
     linuxMotionTimer.Initialize(MotionManager::GetInstance());
-    printf( "\n===== 255 =====\n\n");
     linuxMotionTimer.Start();
     printf( "\n===== Iniciou a Thread =====\n\n");
     
     /////////////////////////////////////////////////////////////////////
-
     actionMove.poseStandup(stop_gait); /* Init(stand up) pose */
-
+    
     //====== Reset the IMU ==========
 //    sleep(2);
 //    write_int(mem, IMU_RESET, 1);

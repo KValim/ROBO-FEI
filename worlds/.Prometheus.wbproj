@@ -9,5 +9,4 @@ renderingMode: PLAIN
 orthographicViewHeight: 1
 textFiles: 0 "controllers/Control/Control.cpp"
 globalOptionalRendering: CoordinateSystem::JointAxes::LightSensorRays
-centerOfMass: player red 1
 consoles: Console:All:All

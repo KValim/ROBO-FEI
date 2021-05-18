@@ -139,9 +139,7 @@ void LinuxMotionTimer::Start(void)
 	if(error != 0) printf("error = %d\n",error);
 	
 	// create and start the thread
-  if((error=pthread_create(&this->thread,&attr,this->motion_timing,this))!=0)
-    exit(-1);
-
+  if((error=pthread_create(&this->thread,&attr,this->motion_timing,this))!=0) exit(-1);
 	this->timer_running=true;
 }
 
