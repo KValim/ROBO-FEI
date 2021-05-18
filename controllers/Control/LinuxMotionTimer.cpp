@@ -140,8 +140,10 @@ void LinuxMotionTimer::Start(void)
 	
 	// create and start the thread
   if((error=pthread_create(&this->thread,&attr,this->motion_timing,this))!=0)
+  {
+    std::cout<< "\nDeu ruim aqui no if" << std::endl; // TODO tirar
     exit(-1);
-
+  }
 	this->timer_running=true;
 }
 
