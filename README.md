@@ -9,3 +9,4 @@ https://github.com/cyberbotics/webots/releases/tag/nightly_17_5_2021
 
 1. Abrir  /controllers/Control/Control.cpp
 2. Na linha 125, alterar "password" para a sua senha de usuário do Linux
+3. Recompilar o controlador no Webots
