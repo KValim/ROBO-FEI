@@ -1,2 +1,2 @@
 #!/bin/bash
-cd RoboCup && touch test
+#cd RoboCup && touch test

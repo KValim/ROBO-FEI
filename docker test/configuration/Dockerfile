@@ -18,15 +18,15 @@ RUN apt update -y \
     && rm -rf /var/lib/apt/list/*
 
 # Adicionando o script de CMD
-ADD start.sh /start.sh
+#ADD start.sh /start.sh
 
 # Obtendo o controlador do github e ??
 RUN mkdir -p /RoboCup \
     && git clone https://github.com/KValim/ROBO-FEI.git /RoboCup
-RUN chmod +x /start.sh
+#RUN chmod +x /start.sh
 
 # Controlador port
 EXPOSE 3838
 
 # Rodando o script
-CMD ["/start.sh"]
+#CMD ["/start.sh"]

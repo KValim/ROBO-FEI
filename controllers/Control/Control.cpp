@@ -108,7 +108,11 @@ int main(int argc, char **argv)
     //---------------------------
 
     //Acopla ou cria a memoria compartilhada
+<<<<<<< HEAD
     int *mem = using_shared_memory(ini->getd("Communication","no_player_robofei",-1024) * 100); //0 for real robot     // TODO descomentar
+=======
+    int *mem = using_shared_memory(ini->getd("Communication","no_player_robofei",-1024) * 100); //0 for real robot
+>>>>>>> 3b0c6c46f3f360f3b0850aeee2a3f5dddf92976d
     
     char string1[50]; //String
     bool stop_gait = true;
@@ -122,7 +126,11 @@ int main(int argc, char **argv)
     //uint8_t dxl_error = 0;
 
     //Configurando para prioridade maxima para executar este processo-------
+<<<<<<< HEAD
     sprintf(string1,"echo password | sudo -S chrt -p -r 99 %d", getpid());
+=======
+    sprintf(string1,"sudo chrt -p -r 99 %d", getpid());
+>>>>>>> 3b0c6c46f3f360f3b0850aeee2a3f5dddf92976d
     system(string1); //prioridade
     
     printf( "\n===== ROBOFEI-HT Control Process Robot Teen =====\n\n");
@@ -223,7 +231,10 @@ int main(int argc, char **argv)
     MotionManager::GetInstance()->AddModule((MotionModule*)Walking::GetInstance());
     LinuxMotionTimer linuxMotionTimer;
     linuxMotionTimer.Initialize(MotionManager::GetInstance());
+<<<<<<< HEAD
     cout<< "\nDeu ruim aqui no linuxMotionTimer.Start()" << endl; // TODO tirar
+=======
+>>>>>>> 3b0c6c46f3f360f3b0850aeee2a3f5dddf92976d
     linuxMotionTimer.Start();
     printf( "\n===== Iniciou a Thread =====\n\n");
     
