@@ -27,7 +27,6 @@ Arquivo fonte contendo o programa que controla os servos do corpo do robô
 //#include "dynamixel_sdk.h" //biblioteca SDK
 #include <vector>
 
-
 #include "minIni.h"
 #include <string>
 
@@ -120,6 +119,7 @@ int main(int argc, char **argv)
     unsigned int count_read=0;
     unsigned int step_time=8; // Determina a frequencia de leitura do blackboard
     //uint8_t dxl_error = 0;
+
 
     //Configurando para prioridade maxima para executar este processo-------
     sprintf(string1,"echo password | sudo -S chrt -p -r 99 %d", getpid());

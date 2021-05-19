@@ -2,7 +2,7 @@
 #include <webots/Motor.hpp>
 #include <iostream>
 
-#define timeStep 320
+#define timeStep 8
 using namespace webots;
 using namespace std;
 
@@ -10,29 +10,33 @@ int main(int argc, char **argv) {
 
   Robot *robot = new Robot();
   
-  Motor *Neck = robot->getMotor("Neck");
-  Motor *ShoulderL = robot->getMotor("ShoulderL");
-  Motor *ArmUpperL = robot->getMotor("ArmUpperL");
-  Motor *ArmLowerL = robot->getMotor("ArmLowerL");
-  Motor *ShoulderR = robot->getMotor("ShoulderR");
-  Motor *ArmUpperR = robot->getMotor("ArmUpperR");
-  Motor *ArmLowerR = robot->getMotor("ArmLowerR");
-  Motor *PelvYL = robot->getMotor("PelvYL");
-  Motor *PelvL = robot->getMotor("PelvL");
-  Motor *LegUpperL = robot->getMotor("LegUpperL");
-  Motor *LegLowerL = robot->getMotor("LegLowerL");
-  Motor *AnkleL = robot->getMotor("AnkleL");
-  Motor *FootL = robot->getMotor("FootL");
-  Motor *PelvYR = robot->getMotor("PelvYR");
-  Motor *PelvR = robot->getMotor("PelvR");
-  Motor *LegUpperR = robot->getMotor("LegUpperR");
-  Motor *LegLowerR = robot->getMotor("LegLowerR");
-  Motor *AnkleR = robot->getMotor("AnkleR");
-  Motor *FootR = robot->getMotor("FootR");
+  Motor *Neck = robot->getMotor("Neck [head]");
+  
+  Motor *ShoulderL = robot->getMotor("LeftShoulderRoll [shoulder]");
+  Motor *ArmUpperL = robot->getMotor("LeftArmPitch [arm]");
+  Motor *ArmLowerL = robot->getMotor("LeftElbowPitch [arm]");
+  
+  Motor *ShoulderR = robot->getMotor("RightShoulderRoll [shoulder]");
+  Motor *ArmUpperR = robot->getMotor("RightArmPitch [arm]");
+  Motor *ArmLowerR = robot->getMotor("RightElbowPitch [arm]");
+  
+  Motor *PelvYL = robot->getMotor("LeftHipYaw [hip]");
+  Motor *PelvL = robot->getMotor("LeftHipRoll [hip]");
+  Motor *LegUpperL = robot->getMotor("LeftLegPitch [leg]");
+  Motor *LegLowerL = robot->getMotor("LeftKnee [leg]");
+  Motor *AnkleL = robot->getMotor("LeftFootPitch [foot]");
+  Motor *FootL = robot->getMotor("LeftFootRoll [foot]");
+  
+  Motor *PelvYR = robot->getMotor("RightHipYaw [hip]");
+  Motor *PelvR = robot->getMotor("RightHipRoll [hip]");
+  Motor *LegUpperR = robot->getMotor("RightLegPitch [leg]");
+  Motor *LegLowerR = robot->getMotor("RightKnee [leg]");
+  Motor *AnkleR = robot->getMotor("RightFootPitch [foot]");
+  Motor *FootR = robot->getMotor("RightFootRoll [foot]");
 
   int t = -1;
   while(robot->step(timeStep) != t){
-  //upright pose
+
   Neck->setPosition(0.00);
   ShoulderL->setPosition(0.00);
   ArmUpperL->setPosition(-2.434);
@@ -56,9 +60,8 @@ int main(int argc, char **argv) {
   };
   
   t= -1;
-  
   while(robot->step(timeStep) != t){
-  //upright pose
+
   Neck->setPosition(0.00);
   ShoulderL->setPosition(0.00);
   ArmUpperL->setPosition(-2.434);
@@ -80,17 +83,7 @@ int main(int argc, char **argv) {
   FootR->setPosition(0.00);
   
   }
-  //1.302  0.453
+  
   delete robot;
   return 0;
 }
-
-//neck +-1.07
-//shoulderL +-2.83
-//armupperL -2.83   +0.057
-//armlowerL +-2.576
-
-//foot +-1.075
-//ankle -0.566    +0.34
-//leglower -1.755  +1.472
-//legupper -2.83    +0.453

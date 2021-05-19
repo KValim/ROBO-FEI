@@ -77,24 +77,24 @@ bool MotionManager::Initialize(webots::Robot *robot, bool fadeIn)
 	m_ProcessEnable = true;
 	this->inicio = true;
 	
-	ShoulderL = robot->getMotor("ShoulderL");
-  ShoulderR = robot->getMotor("ShoulderR");
-  ArmLowerL = robot->getMotor("ArmLowerL");
-  ArmLowerR = robot->getMotor("ArmLowerR");
-  ArmUpperL = robot->getMotor("ArmUpperL");
-  ArmUpperR = robot->getMotor("ArmUpperR");
-  PelvYL = robot->getMotor("PelvYL");
-  PelvYR = robot->getMotor("PelvYR");
-  PelvL = robot->getMotor("PelvL");
-  PelvR = robot->getMotor("PelvR");
-  LegLowerL = robot->getMotor("LegLowerL");
-  LegLowerR = robot->getMotor("LegLowerR");
-  LegUpperL = robot->getMotor("LegUpperL");
-  LegUpperR = robot->getMotor("LegUpperR");
-  AnkleL = robot->getMotor("AnkleL");
-  AnkleR = robot->getMotor("AnkleR");
-  FootL = robot->getMotor("FootL");
-  FootR = robot->getMotor("FootR");
+	ShoulderL = robot->getMotor("LeftShoulderRoll [shoulder]");
+  ShoulderR = robot->getMotor("RightShoulderRoll [shoulder]");
+  ArmUpperL = robot->getMotor("LeftArmPitch [arm]");
+  ArmUpperR = robot->getMotor("RightArmPitch [arm]");
+  ArmLowerL = robot->getMotor("LeftElbowPitch [arm]");
+  ArmLowerR = robot->getMotor("RightElbowPitch [arm]");
+  PelvYL = robot->getMotor("LeftHipYaw [hip]");
+  PelvYR = robot->getMotor("RightHipYaw [hip]");
+  PelvL = robot->getMotor("LeftHipRoll [hip]");
+  PelvR = robot->getMotor("RightHipRoll [hip]");
+  LegUpperL = robot->getMotor("LeftLegPitch [leg]");
+  LegUpperR = robot->getMotor("RightLegPitch [leg]");
+  LegLowerL = robot->getMotor("LeftKnee [leg]");
+  LegLowerR = robot->getMotor("RightKnee [leg]");
+  AnkleL = robot->getMotor("LeftFootPitch [foot]");
+  AnkleR = robot->getMotor("RightFootPitch [foot]");
+  FootL = robot->getMotor("LeftFootRoll [foot]");
+  FootR = robot->getMotor("RightFootRoll [foot]");
 
 //Modo de Operação dos motores para controlar a posição e torque(atraves da corrente).
 //  m_CM730->write1ByteTxRx(portHandler, BROADCAST_ID, MX28::P_OPERATING_MODE, 5, &dxl_error);

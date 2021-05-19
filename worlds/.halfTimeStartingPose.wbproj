@@ -5,5 +5,5 @@ sceneTreePerspectives: 000000ff00000001000000020000031e000000fa01000000020100000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: -1
+textFiles: 1 "controllers/Control/Control.cpp" "controllers/wave/wave.cpp"
 consoles: Console:All:All
