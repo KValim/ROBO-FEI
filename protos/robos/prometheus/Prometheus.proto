@@ -1672,10 +1672,10 @@ PROTO Prometheus [
                 ]
                 name "left arm pitch [arm]"
                 boundingObject Transform {
-                  translation 0.113 -0.01 0.016
+                  translation 0.113 -0.01 0.017
                   children [
                     Box {
-                      size 0.054 0.055 0.175
+                      size 0.052 0.05 0.171
                     }
                   ]
                 }
@@ -1716,10 +1716,10 @@ PROTO Prometheus [
           ]
           name "left shoulder roll [shoulder]"
           boundingObject Transform {
-            translation 0.1064 -0.01 0.087
+            translation 0.0852 -0.01 0.087
             children [
               Box {
-                size 0.051 0.052 0.032
+                size 0.007 0.052 0.03
               }
             ]
           }
@@ -1998,10 +1998,10 @@ PROTO Prometheus [
                 ]
                 name "right arm pitch [arm]"
                 boundingObject Transform {
-                  translation 0.113 -0.01 0.016
+                  translation 0.113 -0.01 0.017
                   children [
                     Box {
-                      size 0.054 0.055 0.175
+                      size 0.052 0.05 0.171
                     }
                   ]
                 }
@@ -2042,10 +2042,10 @@ PROTO Prometheus [
           ]
           name "right shoulder roll [shoulder]"
           boundingObject Transform {
-            translation 0.13 -0.008 0.087
+            translation 0.1525 -0.008 0.087
             children [
               Box {
-                size 0.051 0.052 0.032
+                size 0.007 0.052 0.03
               }
             ]
           }
@@ -2302,10 +2302,10 @@ PROTO Prometheus [
                                             ]
                                             name "left foot roll [foot]"
                                             boundingObject Transform {
-                                              translation -0.023 -0.009 -0.4099
+                                              translation -0.025 -0.008 -0.427
                                               children [
                                                 Box {
-                                                  size 0.103 0.203 0.041
+                                                  size 0.102 0.2 0.006
                                                 }
                                               ]
                                             }
@@ -2958,10 +2958,10 @@ PROTO Prometheus [
                                       ]
                                       name "left foot pitch [foot]"
                                       boundingObject Transform {
-                                        translation -0.04 0.039 -0.376
+                                        translation -0.0392 0.0412 -0.376
                                         children [
                                           Box {
-                                            size 0.059 0.11 0.069
+                                            size 0.045 0.1 0.065
                                           }
                                         ]
                                       }
@@ -2998,10 +2998,10 @@ PROTO Prometheus [
                                 ]
                                 name "left knee [leg]"
                                 boundingObject Transform {
-                                  translation -0.039 0.012 -0.33
+                                  translation -0.039 0.0126 -0.329
                                   children [
                                     Box {
-                                      size 0.06 0.036 0.158
+                                      size 0.056 0.032 0.137
                                     }
                                   ]
                                 }
@@ -3063,10 +3063,10 @@ PROTO Prometheus [
                           ]
                           name "left leg pitch [leg]"
                           boundingObject Transform {
-                            translation -0.037 0.013 -0.198
+                            translation -0.0387 0.013 -0.205
                             children [
                               Box {
-                                size 0.06 0.048 0.16
+                                size 0.056 0.041 0.147
                               }
                             ]
                           }
@@ -3082,10 +3082,10 @@ PROTO Prometheus [
                     ]
                     name "left hip roll [hip]"
                     boundingObject Transform {
-                      translation -0.0389 0.038 -0.151
+                      translation -0.0389 0.0407 -0.152
                       children [
                         Box {
-                          size 0.063 0.117 0.067
+                          size 0.049 0.102 0.065
                         }
                       ]
                     }
@@ -3127,8 +3127,13 @@ PROTO Prometheus [
             }
           ]
           name "left hip yaw [hip]"
-          boundingObject Box {
-            size 0.04 0.07 0.046
+          boundingObject Transform {
+            translation 0.0008 -0.003 0.02
+            children [
+              Box {
+                size 0.041 0.06 0.005
+              }
+            ]
           }
           physics Physics {
             density -1
@@ -3383,10 +3388,10 @@ PROTO Prometheus [
                                             ]
                                             name "right foot roll [foot]"
                                             boundingObject Transform {
-                                              translation -0.053 -0.009 -0.4099
+                                              translation -0.053 -0.008 -0.427
                                               children [
                                                 Box {
-                                                  size 0.103 0.203 0.039
+                                                  size 0.102 0.2 0.006
                                                 }
                                               ]
                                             }
@@ -4039,10 +4044,10 @@ PROTO Prometheus [
                                       ]
                                       name "right foot pitch [foot]"
                                       boundingObject Transform {
-                                        translation -0.04 0.039 -0.376
+                                        translation -0.0392 0.0412 -0.376
                                         children [
                                           Box {
-                                            size 0.059 0.11 0.069
+                                            size 0.045 0.1 0.065
                                           }
                                         ]
                                       }
@@ -4079,10 +4084,10 @@ PROTO Prometheus [
                                 ]
                                 name "right knee [leg]"
                                 boundingObject Transform {
-                                  translation -0.039 0.012 -0.33
+                                  translation -0.039 0.0126 -0.329
                                   children [
                                     Box {
-                                      size 0.06 0.036 0.158
+                                      size 0.056 0.032 0.137
                                     }
                                   ]
                                 }
@@ -4144,10 +4149,10 @@ PROTO Prometheus [
                           ]
                           name "right leg pitch [leg]"
                           boundingObject Transform {
-                            translation -0.037 0.013 -0.198
+                            translation -0.0387 0.013 -0.205
                             children [
                               Box {
-                                size 0.06 0.048 0.16
+                                size 0.056 0.041 0.147
                               }
                             ]
                           }
@@ -4163,10 +4168,10 @@ PROTO Prometheus [
                     ]
                     name "right hip roll [hip]"
                     boundingObject Transform {
-                      translation -0.0389 0.038 -0.151
+                      translation -0.0389 0.0407 -0.152
                       children [
                         Box {
-                          size 0.063 0.117 0.067
+                          size 0.049 0.102 0.065
                         }
                       ]
                     }
@@ -4208,8 +4213,13 @@ PROTO Prometheus [
             }
           ]
           name "right hip yaw [hip]"
-          boundingObject Box {
-            size 0.04 0.07 0.046
+          boundingObject Transform {
+            translation 0.0008 -0.003 0.02
+            children [
+              Box {
+                size 0.041 0.06 0.005
+              }
+            ]
           }
           physics Physics {
             density -1
@@ -4238,8 +4248,13 @@ PROTO Prometheus [
         ]
       }
     ]
-    boundingObject Box {
-      size 0.15 0.14 0.22
+    boundingObject Transform {
+      translation -0.0009 0 0
+      children [
+        Box {
+          size 0.143 0.145 0.21
+        }
+      ]
     }
     physics Physics {
       density -1

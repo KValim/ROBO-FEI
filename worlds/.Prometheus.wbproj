@@ -7,6 +7,7 @@ maximizedDockId: -1
 centralWidgetVisible: 1
 renderingMode: PLAIN
 orthographicViewHeight: 1
-textFiles: 1 "controllers/Control/Control.cpp" "controllers/wave/wave.cpp"
+textFiles: 0 "controllers/Control/Control.cpp"
 globalOptionalRendering: CoordinateSystem::JointAxes::LightSensorRays
+centerOfMass: blue player 1
 consoles: Console:All:All
