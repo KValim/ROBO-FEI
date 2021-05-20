@@ -11,8 +11,8 @@ PROTO Prometheus [
   field SFFloat    resolution               0.0015
   field SFString   controller               ""  
   field SFBool     selfCollision            TRUE      
-  field SFInt32    cameraWidth              640    
-  field SFInt32    cameraHeight             480     
+  field SFInt32    cameraWidth              800    
+  field SFInt32    cameraHeight             600     
   
   #protected
   hiddenField SFString _model       "Prometheus"
