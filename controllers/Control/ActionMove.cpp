@@ -381,7 +381,7 @@ void ActionMove::standupFront(bool &stop_gait)
     write_int(mem, CONTROL_ACTION, 15);
     write_int(mem, CONTROL_MOVING, 1);
     std::cout<<" | \e[38;5;45mLevantar de frente\e[0m"<<std::endl;
-    move_action(5, 0, stop_gait);
+    move_action(10, 0, stop_gait);
     write_int(mem, CONTROL_MOVING, 0);
 }
 
@@ -392,7 +392,7 @@ void ActionMove::standupBack(bool &stop_gait)
     write_int(mem, CONTROL_ACTION, 16);
     write_int(mem, CONTROL_MOVING, 1);
     std::cout<<" | \e[38;5;45mLevantar de costa\e[0m"<<std::endl;
-    move_action(3, 0, stop_gait);
+    move_action(5, 0, stop_gait);
     write_int(mem, CONTROL_MOVING, 0);
 }
 
