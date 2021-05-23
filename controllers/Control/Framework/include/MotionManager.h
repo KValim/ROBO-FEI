@@ -8,7 +8,6 @@
 #ifndef _MOTION_MANGER_H_
 #define _MOTION_MANGER_H_
 
-
 #include <list>
 #include <fstream>
 #include <iostream>
