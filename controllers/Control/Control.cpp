@@ -12,6 +12,8 @@
 ****************************************************************************
 Arquivo fonte contendo o programa que controla os servos do corpo do robô
 ---------------------------------------------------------------------------*/
+#define PY_SSIZE_T_CLEAN
+#include <Python.h>
 
 #include <unistd.h> //sleep, usleep
 #include <libgen.h> //dirname
@@ -91,9 +93,28 @@ void sighandler(int sig)
     exit(1);
 }
 
-int main(int argc, char **argv)
+void pythonRun(char **argv)
 {
-    
+    wchar_t *program = Py_DecodeLocale(argv[0], NULL);
+    if (program == NULL) {
+        fprintf(stderr, "Fatal error: cannot decode argv[0]\n");
+        exit(1);
+    }
+    Py_SetProgramName(program);  /* optional but recommended */
+    Py_Initialize();
+    PyRun_SimpleString("from time import time,ctime\n"
+                       "print('Today is', ctime(time()))\n");
+    if (Py_FinalizeEx() < 0) {
+        exit(120);
+    }
+    PyMem_RawFree(program);
+}
+
+int main(int argc, char **argv)
+{   
+
+    pythonRun(argv);
+
     change_current_dir();
     
     minIni* ini;
@@ -119,6 +140,7 @@ int main(int argc, char **argv)
     unsigned int step_time=8; // Determina a frequencia de leitura do blackboard
     //uint8_t dxl_error = 0;
 
+    int flag = 0;
 
     //Configurando para prioridade maxima para executar este processo-------
     sprintf(string1,"echo password | sudo -S chrt -p -r 99 %d", getpid());
@@ -253,7 +275,21 @@ int main(int argc, char **argv)
 //    } 
     //===============================
 
-    int key = 103; // greeting 104   // walk_foward_slow 107 
+    /*//
+    MotionStatus::m_CurrentJoints.SetValue(1,1);
+    MotionStatus::m_CurrentJoints.SetValue(2,1);
+    MotionStatus::m_CurrentJoints.SetValue(3,1);
+    MotionStatus::m_CurrentJoints.SetValue(4,1);
+    MotionStatus::m_CurrentJoints.SetValue(5,1);
+    MotionStatus::m_CurrentJoints.SetValue(6,1);
+    MotionStatus::m_CurrentJoints.SetValue(7,1);
+    MotionStatus::m_CurrentJoints.SetValue(8,1);
+    MotionStatus::m_CurrentJoints.SetValue(9,1);
+    /*/
+
+
+
+    int key = 99; // greeting 104   // walk_foward_slow 107 
     //***********************************************************************************************
     if (true) //verifica se foi chamado o argumento de controle pelo teclado
     {
@@ -352,7 +388,30 @@ int main(int argc, char **argv)
                 break;
 
                 case 107: //k
+                    /*if(flag<=3050) 
+                    {
+                        gaitMove.walk_foward_slow(stop_gait, true, same_moviment);
+                        cout << flag << endl;
+                        flag++;
+                    }
+                    else if (flag<=3350)
+                    {
+                        gaitMove.turn_left(stop_gait, true, same_moviment);
+                        cout << flag << endl;
+                        flag++;
+                    }
+                    else 
+                    {
+                        
+                        gaitMove.robot_stop(stop_gait);
+                        
+                    }
+                    */
                     gaitMove.walk_foward_slow(stop_gait, true, same_moviment);
+                    
+
+                    
+                    
                 break;
 
                 case 114: //r
@@ -416,9 +475,9 @@ int main(int argc, char **argv)
 
     //***************************************************************************************
     //-------------------------Controle pela decisão-----------------------------------------
-    logInit(); // save the time when start the control process
+    //logInit(); // save the time when start the control process
     while(1)
-    {
+    {       
             //Confere se o movimento atual e o mesmo do anterior----------
             if(buffer==read_int(mem, DECISION_ACTION_A))
                 same_moviment = true;
@@ -755,7 +814,7 @@ void logInit()
         std::fstream File;
         time_t _tm =time(NULL);
         struct tm * curtime = localtime ( &_tm );
-        File.open("../../Control/Control.log", std::ios::app | std::ios::out);
+        File.open("Control.log", std::ios::app | std::ios::out);
         if (File.good() && File.is_open())
         {
             File << "Inicializando o processo do controle "<<" --- ";
