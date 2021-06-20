@@ -1,0 +1,34 @@
+1. transformar exemplo.py em server de zmq
+
+2. transformar iniciar o server (exemplo.py) pelo c
+    - junto com spaw do controlador
+
+3. tranformar c em client de zmq
+
+4. enviar image para o  server
+ 4.1 lembrar de inverter o b e r
+ 4.2 lembrar de apagar o A, final do image
+
+5. no python transformar o vetor de char em numpy array
+
+6. passar esse numpy array na rede
+
+7. pegar results e enviar para o c 
+
+
+
+
+
+
+
+libs para o docker
+
+visao
+
+
+
+comunicação
+echo 'deb http://download.opensuse.org/repositories/network:/messaging:/zeromq:/release-stable/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/network:messaging:zeromq:release-stable.list
+curl -fsSL https://download.opensuse.org/repositories/network:messaging:zeromq:release-stable/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/network_messaging_zeromq_release-stable.gpg > /dev/null
+sudo apt update
+sudo apt install libzmq3-dev
