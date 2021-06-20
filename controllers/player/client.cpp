@@ -25,6 +25,7 @@
 
 #include "robot_client.hpp"
 
+
 static void usage(const std::string &error_msg = "") {
   if (error_msg.length() > 0)
     fprintf(stderr, "Invalid call: %s\n", error_msg.c_str());
@@ -191,8 +192,8 @@ void penalty(RobotClient client){
 
     const char *phase2 = "./kick_right_weak/2.txt"; //pe para tras
     const char *phase3 = "./kick_right_weak/3.txt"; //chuta
-    const char *phase4 = "./kick_right_weak/4.txt"; //retorna o pe
-    const char *phase5 = "./kick_right_weak/5.txt"; //
+    const char *phase4 = "./kick_right_weak/4.txt"; //chuta
+    const char *phase5 = "./kick_right_weak/5.txt"; //retorna o pe
     const char *phase6 = "./kick_right_weak/6.txt"; 
 
     if(flag == 0) flag_time = time;
@@ -216,24 +217,118 @@ void penalty(RobotClient client){
   client.sendRequest(request);
 }
 
-/* void penalty(RobotClient client){
+void fall_left(RobotClient client){
+  const char *move;
+  const char *phase1 = "./fall_left/1.txt"; //
+  const char *phase2 = "./fall_left/2.txt"; //
+
+
   SensorMeasurements sensors = client.receive();
-  int time_penalty = sensors.time();
+  int time = sensors.time();
 
-  if(stop_wave<5)
+  if(stop_walk<5)
   {
-    if(flag_penalty == 0) flag_time_penalty = time_penalty;
-    flag_penalty++;
+    if(flag == 0) flag_time = time;
+    flag++;
 
-    if(time_penalty<(50+flag_time_penalty)) walk(client);
+    if(time<(500+flag_time)) move = phase1;
     else
     {
-      kick_right_weak(client);
-      flag_penalty = 0;
-      //stop_wave++;
+      move = phase2;
+      //flag = 0;
+      //stop_walk++;
     }
   }
-} */
+
+  ActuatorRequests request = RobotClient::buildRequestMessage(move);
+  client.sendRequest(request);
+}
+
+void fall_right(RobotClient client){
+  const char *move;
+  const char *phase1 = "./fall_right/1.txt"; //
+  const char *phase2 = "./fall_right/2.txt"; //
+
+
+  SensorMeasurements sensors = client.receive();
+  int time = sensors.time();
+
+  if(stop_walk<5)
+  {
+    if(flag == 0) flag_time = time;
+    flag++;
+
+    if(time<(500+flag_time)) move = phase1;
+    else
+    {
+      move = phase2;
+      //flag = 0;
+      //stop_walk++;
+    }
+  }
+
+  ActuatorRequests request = RobotClient::buildRequestMessage(move);
+  client.sendRequest(request);
+}
+
+void standup_front(RobotClient client){
+  const char *move;
+  const char *phase1 = "./standup_front/1.txt"; //
+  const char *phase2 = "./standup_front/2.txt"; //
+  const char *phase3 = "./standup_front/3.txt"; //
+  const char *phase4 = "./standup_front/4.txt"; //
+  const char *phase5 = "./standup_front/5.txt"; //
+  const char *phase6 = "./standup_front/6.txt"; //
+
+  SensorMeasurements sensors = client.receive();
+  int time = sensors.time();
+
+
+  if(flag == 0) flag_time = time;
+  flag++;
+
+  if(time<(500+flag_time)) move = phase1;
+  else if(time <(1000+flag_time)) move = phase2;
+  else if(time <(1500+flag_time)) move = phase3;
+  else if(time <(2000+flag_time)) move = phase4;
+  else if(time <(2500+flag_time)) move = phase5;
+  else
+  {
+    move = phase6;
+    //flag = 0;
+  }
+  
+
+  ActuatorRequests request = RobotClient::buildRequestMessage(move);
+  client.sendRequest(request);
+}
+
+void defense_position(RobotClient client){
+  const char *move;
+  const char *phase1 = "./defense_position/1.txt"; //
+  const char *phase2 = "./defense_position/2.txt"; //
+
+
+  SensorMeasurements sensors = client.receive();
+  int time = sensors.time();
+
+  if(stop_walk<5)
+  {
+    if(flag == 0) flag_time = time;
+    flag++;
+
+    if(time<(500+flag_time)) move = phase1;
+    else
+    {
+      move = phase2;
+      //flag = 0;
+      //stop_walk++;
+    }
+  }
+
+  ActuatorRequests request = RobotClient::buildRequestMessage(move);
+  client.sendRequest(request);
+}
 
 int main(int argc, char *argv[]) {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -271,12 +366,19 @@ int main(int argc, char *argv[]) {
 
   RobotClient client(host, port, verbosity);
   client.connectClient();
+  
   while (client.isOk()) {
     try {
+      
       //tchau(client);
       //walk(client);
       //kick_right_weak(client);
       penalty(client);
+      //fall_left(client);
+      //fall_right(client); 
+      //standup_front(client); 
+      //defense_position(client);
+
 
       SensorMeasurements sensors = client.receive();
       std::string printout;
