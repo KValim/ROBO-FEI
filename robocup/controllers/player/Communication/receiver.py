@@ -10,7 +10,7 @@ from gamestate import GameState, ReturnData, GAME_CONTROLLER_RESPONSE_VERSION
 
 context = zmq.Context()
 zmq_socket = context.socket(zmq.REQ)
-zmq_socket.connect("tcp://localhost:5555")
+zmq_socket.connect("tcp://localhost:3737")
 
 logger = logging.getLogger('game_controller')
 logger.setLevel(logging.DEBUG)
@@ -140,6 +140,7 @@ class GameStateReceiver(object):
 class SampleGameStateReceiver(GameStateReceiver):
 
     def on_new_gamestate(self, state):
+        
         #print(state)
         #print(state.secondary_state)
         
@@ -159,7 +160,7 @@ class SampleGameStateReceiver(GameStateReceiver):
             zmq_socket.send(b"ready")
             print(zmq_socket.recv())
 
-        elif state.game_state == "STATE_PLAYING" and state.secondary_state == "STATE_PENALTYSHOOT":
+        elif state.kickoff_team == TEAM_ROBOFEI and state.game_state == "STATE_PLAYING" and state.secondary_state == "STATE_PENALTYSHOOT":
             print ("penaltykick")
             zmq_socket.send(b"penaltykick")
             print(zmq_socket.recv())
@@ -188,8 +189,10 @@ class SampleGameStateReceiver(GameStateReceiver):
         else:
             print ("no reconheci o comando...vamos jogar!")
         print(datetime.now())
+        
 
 
 if __name__ == '__main__':
     rec = SampleGameStateReceiver(team=TEAM_ROBOFEI, player=ROBOT_NUMBER)
     rec.receive_forever()
+    

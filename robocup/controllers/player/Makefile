@@ -20,13 +20,14 @@
 null :=
 space := $(null) $(null)
 WEBOTS_HOME_PATH=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
-LIBRARIES = -lprotobuf -ljpeg
+INCLUDE = -I"/usr/local/lib"
+LIBRARIES = -lprotobuf -ljpeg -lcjson
 CXX_SOURCES = player.cpp messages.pb.cpp
 CFLAGS = -Wno-array-bounds
 FILES_TO_REMOVE = messages.pb.* client.exe client test_client.exe test_client
 ifeq ($(OS),Windows_NT)
 # on Windows, need to link with WinSock2
-LIBRARIES += -lws2_32
+LIBRARIES += -lws2_32 -lcjson
 endif
 ifeq ($(MAKECMDGOALS),)
 GOAL = release

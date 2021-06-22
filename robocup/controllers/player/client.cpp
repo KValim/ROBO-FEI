@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <stdio.h>
+
 #include <string.h>
 #include <iostream>
 
@@ -27,10 +27,24 @@
 
 //  Hello World server
 #include <zmq.hpp>
-#include <string.h>
-#include <stdio.h>
+
+
 #include <unistd.h>
 #include <assert.h>
+
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+
+#include <fstream>
+#include <fcntl.h>
+#include <google/protobuf/io/coded_stream.h>
+using namespace std;
+using google::protobuf::io::FileInputStream;
+using google::protobuf::io::FileOutputStream;
+
+#include <cjson/cJSON.h>
 
 static void usage(const std::string &error_msg = "") {
   if (error_msg.length() > 0)
@@ -60,29 +74,24 @@ void walk(RobotClient client){
   SensorMeasurements sensors = client.receive();
   int time = sensors.time();
 
-  if(stop_walk<5)
+  if(flag == 0) flag_time = time;
+  flag++;
+
+  if(time<(50+flag_time)) move = phase1;
+  else if(time <(100+flag_time)) move = phase2;
+  else if(time <(150+flag_time)) move = phase3;
+  else if(time <(200+flag_time)) move = phase4;
+  else if(time <(250+flag_time)) move = phase5;
+  else if(time <(300+flag_time)) move = phase6;
+  else if(time <(350+flag_time)) move = phase7;
+  else
   {
-    if(flag == 0) flag_time = time;
-    flag++;
-
-    if(time<(50+flag_time)) move = phase1;
-    else if(time <(100+flag_time)) move = phase2;
-    else if(time <(150+flag_time)) move = phase3;
-    else if(time <(200+flag_time)) move = phase4;
-    else if(time <(250+flag_time)) move = phase5;
-    else if(time <(300+flag_time)) move = phase6;
-    else if(time <(350+flag_time)) move = phase7;
-    else
-    {
-      move = phase8;
-      flag = 0;
-      //stop_wave++;
-    }
+    move = phase8;
+    flag = 0;
   }
-
+  
   ActuatorRequests request = RobotClient::buildRequestMessage(move);
   client.sendRequest(request);
-
 }
 
 void kick_right_weak(RobotClient client){
@@ -233,7 +242,7 @@ void penalty(RobotClient client){
   SensorMeasurements sensors = client.receive();
   int time = sensors.time();
 
-  if(stop_walk<=48)
+  if(stop_walk<=38)
   {
     const char *phase1 = "./walk/1.txt"; //"walk_ready"
     const char *phase2 = "./walk/2.txt"; //levanta pe direito
@@ -263,7 +272,7 @@ void penalty(RobotClient client){
     }
   }
 
-  if(stop_walk > 48)
+  if(stop_walk > 38)
   {
     const char *phase1 = "./kick_right_weak/1.txt"; //abre os bracos
     const char *phase2 = "./kick_right_weak/2.txt"; //pe para tras
@@ -438,18 +447,46 @@ void defense_position(RobotClient client){
   client.sendRequest(request);
 }
 
+
+
+void read_accel(RobotClient client){
+  const char *accel = "accel.txt"; 
+
+  ActuatorRequests request = RobotClient::buildRequestMessage(accel);
+  client.sendRequest(request);
+
+  SensorMeasurements sensors = client.receive();
+  std::string printout;
+  google::protobuf::TextFormat::PrintToString(sensors, &printout);
+
+  const char * c = printout.c_str();
+  cJSON *json = cJSON_Parse(c);
+  
+
+  cout << json << endl;
+
+  //std::cout << printout << std::endl;  
+}
+
+
+
 int main(int argc, char *argv[]) {
     //  Socket to talk to clients
   void *context = zmq_ctx_new ();
   void *responder = zmq_socket (context, ZMQ_REP);
-  int rc = zmq_bind (responder, "tcp://*:5555");
+  int rc = zmq_bind (responder, "tcp://*:3737");
   assert (rc == 0);
+
+  int flag_down_front = 0;
+  std::string aux;
 
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  
+
   int port = -1;
   std::string host;
+  std::string gyro;
+  int gyro_time_step = -1;
   int arg_idx = 1;
   int verbosity = 3;
   while (arg_idx < argc) {
@@ -461,9 +498,7 @@ int main(int argc, char *argv[]) {
           usage("Missing value for verbosity");
         verbosity = std::stoi(argv[arg_idx + 1]);
         arg_idx++;
-      } else if (current_arg == "-h" || current_arg == "--help")
-        usage();
-      else
+      } else  // current_arg == "-h" or "--help" or anything else
         usage();
     } else if (host.length() == 0)
       host = current_arg;
@@ -485,33 +520,39 @@ int main(int argc, char *argv[]) {
 
   while (client.isOk()) {
     try {
+      SensorMeasurements sensors = client.receive();
+
+      read_accel(client);
+
       char buffer [11];
       memset(buffer, 0, sizeof(buffer));
-
-      zmq_send (responder, ".", 1, 0);
-      //sleep(0.01);
-      
+      zmq_send (responder, ".", 1, 0);      
     
 
       zmq_recv (responder, buffer, 11, 0);
-      //printf ("buffer: %s \n", buffer);  //TODO tirar
+      printf ("Game State: %s \n", buffer);  //TODO tirar
       std::string buf = buffer;
+      int zmq_term(void *context);
+      sleep(0.01);
 
-      if(buf == "initial") zmq_send (responder, "Listening", 9, 0);
+      if(buf == "initial") zmq_send(responder, "listening", 9, 0);
 
       if(buf == "ready") 
       {
-        zmq_send (responder, "Walk", 4, 0);  
+        zmq_send(responder, "walk", 4, 0); 
         walk(client);
                
       }
 
-      if(buf == "penaltykick") 
+      /*if(buf == "penaltykick") 
       {
-        zmq_send (responder, "Penalty", 7, 0); 
+        zmq_send (responder, "penalty", 7, 0); 
         penalty(client);
                 
-      }
+      }*/
+
+      //walk(client);
+
       //standup_front(client); 
       //standup_back(client);    //nao funcionando 
       //kick_right_weak(client);
@@ -524,9 +565,8 @@ int main(int argc, char *argv[]) {
       //fall_right(client); 
 
       
-      SensorMeasurements sensors = client.receive();
-      std::string printout;
-      google::protobuf::TextFormat::PrintToString(sensors, &printout);
+
+      
 
 
     } catch (const std::runtime_error &exc) {
